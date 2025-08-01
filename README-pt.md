@@ -4,62 +4,82 @@
 
 Uma biblioteca Kotlin que gera automaticamente builders para data classes usando anotações, especialmente útil para testes.
 
-## Como usar
+## 📦 Configuração e Instalação
 
-### 1. Adicione a dependência
+### Passo 1: Configure o Repositório JitPack
 
-#### Para projetos Android
-
-No seu `build.gradle.kts` (app level):
+Adicione o repositório JitPack no `build.gradle.kts` do seu projeto (nível do projeto):
 
 ```kotlin
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp") version "2.0.0-1.0.21"
+// build.gradle.kts (Nível do projeto)
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") } // Adicione esta linha
+    }
 }
+```
 
+Ou se estiver usando `settings.gradle.kts`:
+
+```kotlin
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") } // Adicione esta linha
+    }
+}
+```
+
+### Passo 2: Adicione os Plugins Necessários
+
+#### build.gradle.kts do projeto (raiz)
+
+Adicione o plugin KSP no `build.gradle.kts` raiz do seu projeto:
+
+```kotlin
+// build.gradle.kts (Nível do projeto)
+plugins {
+    id("com.android.application") version "8.1.4" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.10" apply false
+    id("com.google.devtools.ksp") version "2.0.0-1.0.21" apply false // Adicione esta linha
+}
+```
+
+#### build.gradle.kts do app
+
+No `build.gradle.kts` do seu app (nível do app), aplique os plugins:
+
+```kotlin
+// build.gradle.kts (Nível do app)
+plugins {
+    id("com.android.application") // ou com.android.library
+    id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp") // Aplique o plugin KSP
+}
+```
+
+### Passo 3: Adicione as Dependências
+
+Adicione as dependências da biblioteca no `build.gradle.kts` do seu app:
+
+```kotlin
 dependencies {
-    // Adicione estas dependências
-    implementation("com.angelorobson.buildergen:annotation:1.0.0")
-    ksp("com.angelorobson.buildergen:processor:1.0.0")
+    // Kotlin Builder Generator
+    implementation("com.github.angelorobsonmelo.kotlin-builder-generator:annotation:v1.0.0")
+    ksp("com.github.angelorobsonmelo.kotlin-builder-generator:processor:v1.0.0")
     
     // Suas outras dependências...
 }
 ```
 
-#### Para Maven Local (desenvolvimento)
+## Como usar
 
-Se você clonou este repositório e publicou localmente:
-
-```kotlin
-repositories {
-    mavenLocal() // Adicione esta linha
-    mavenCentral()
-    google()
-}
-
-dependencies {
-    implementation("com.angelorobson.buildergen:annotation:1.0.0")
-    ksp("com.angelorobson.buildergen:processor:1.0.0")
-}
-```
-
-#### Para projetos Kotlin JVM
-
-```kotlin
-plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.ksp)
-}
-
-dependencies {
-    implementation(project(":annotation"))
-    ksp(project(":processor"))
-}
-```
-
-### 2. Anote sua data class
+### 1. Anote sua data class
 
 ```kotlin
 import com.angelorobson.buildergen.annotation.GenerateBuilder
@@ -87,7 +107,7 @@ data class TestPrefixUser(
 )
 ```
 
-### 3. Use o builder gerado
+### 2. Use o builder gerado
 
 #### Sem prefix (padrão)
 ```kotlin
@@ -337,13 +357,13 @@ val orderItems = listOf(
 - ✅ **Kotlin 2.0.0** compatível
 - ✅ **Version Catalog** para gerenciamento de dependências
 
-## 📦 Instalação e Uso
+## 🧪 Configuração para Desenvolvimento Local
 
 ### Opção 1: Usar localmente (recomendado para testes)
 
 1. **Clone o repositório:**
 ```bash
-git clone https://github.com/your-username/kotlin-builder-generator.git
+git clone https://github.com/angelorobsonmelo/kotlin-builder-generator.git
 cd kotlin-builder-generator
 ```
 
@@ -364,19 +384,6 @@ repositories {
 dependencies {
     implementation("com.angelorobson.buildergen:annotation:1.0.0")
     ksp("com.angelorobson.buildergen:processor:1.0.0")
-}
-```
-
-### Opção 2: JitPack (futuramente)
-
-```kotlin
-repositories {
-    maven { url = uri("https://jitpack.io") }
-}
-
-dependencies {
-    implementation("com.github.your-username:kotlin-builder-generator:annotation:1.0.0")
-    ksp("com.github.your-username:kotlin-builder-generator:processor:1.0.0")
 }
 ```
 

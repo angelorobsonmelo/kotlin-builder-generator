@@ -4,62 +4,82 @@
 
 A Kotlin library that automatically generates builders for data classes using annotations, especially useful for testing.
 
-## How to use
+## 📦 Setup and Installation
 
-### 1. Add the dependency
+### Step 1: Configure JitPack Repository
 
-#### For Android projects
-
-In your `build.gradle.kts` (app level):
+Add JitPack repository to your project's `build.gradle.kts` (project level):
 
 ```kotlin
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp") version "2.0.0-1.0.21"
+// build.gradle.kts (Project level)
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") } // Add this line
+    }
 }
+```
 
+Or if using `settings.gradle.kts`:
+
+```kotlin
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") } // Add this line
+    }
+}
+```
+
+### Step 2: Add Required Plugins
+
+#### Project-level build.gradle.kts (root)
+
+Add KSP plugin to your project's root `build.gradle.kts`:
+
+```kotlin
+// build.gradle.kts (Project level)
+plugins {
+    id("com.android.application") version "8.1.4" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.10" apply false
+    id("com.google.devtools.ksp") version "2.0.0-1.0.21" apply false // Add this line
+}
+```
+
+#### App-level build.gradle.kts
+
+In your app's `build.gradle.kts` (app level), apply the plugins:
+
+```kotlin
+// build.gradle.kts (App level)
+plugins {
+    id("com.android.application") // or com.android.library
+    id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp") // Apply KSP plugin
+}
+```
+
+### Step 3: Add Dependencies
+
+Add the library dependencies in your app's `build.gradle.kts`:
+
+```kotlin
 dependencies {
-    // Add these dependencies
-    implementation("com.angelorobson.buildergen:annotation:1.0.0")
-    ksp("com.angelorobson.buildergen:processor:1.0.0")
+    // Kotlin Builder Generator
+    implementation("com.github.angelorobsonmelo.kotlin-builder-generator:annotation:v1.0.0")
+    ksp("com.github.angelorobsonmelo.kotlin-builder-generator:processor:v1.0.0")
     
     // Your other dependencies...
 }
 ```
 
-#### For Maven Local (development)
+## How to use
 
-If you cloned this repository and published locally:
-
-```kotlin
-repositories {
-    mavenLocal() // Add this line
-    mavenCentral()
-    google()
-}
-
-dependencies {
-    implementation("com.angelorobson.buildergen:annotation:1.0.0")
-    ksp("com.angelorobson.buildergen:processor:1.0.0")
-}
-```
-
-#### For Kotlin JVM projects
-
-```kotlin
-plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.ksp)
-}
-
-dependencies {
-    implementation(project(":annotation"))
-    ksp(project(":processor"))
-}
-```
-
-### 2. Annotate your data class
+### 1. Annotate your data class
 
 ```kotlin
 import com.angelorobson.buildergen.annotation.GenerateBuilder
@@ -87,7 +107,7 @@ data class TestPrefixUser(
 )
 ```
 
-### 3. Use the generated builder
+### 2. Use the generated builder
 
 #### Without prefix (default)
 ```kotlin
@@ -337,26 +357,13 @@ val orderItems = listOf(
 - ✅ **Kotlin 2.0.0** compatible
 - ✅ **Version Catalog** for dependency management
 
-## 📦 Installation and Usage
+## 🧪 Local Development Setup
 
-### Option 1: JitPack
-
-```kotlin
-repositories {
-    maven { url = uri("https://jitpack.io") }
-}
-
-dependencies {
-    implementation("com.github.angelorobsonmelo.kotlin-builder-generator:annotation:1.0.0")
-    ksp("com.github.angelorobsonmelo.kotlin-builder-generator:processor:1.0.0")
-}
-```
-
-### Option 2: Use locally (recommended for testing)
+### Option 1: Use locally (recommended for testing)
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/your-username/kotlin-builder-generator.git
+git clone https://github.com/angelorobsonmelo/kotlin-builder-generator.git
 cd kotlin-builder-generator
 ```
 
