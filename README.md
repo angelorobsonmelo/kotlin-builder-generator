@@ -1,6 +1,6 @@
 # Kotlin Builder Generator
 
-**English** | [Português](README-pt.md)
+**English** | [Portuguese](README-pt.md)
 
 A Kotlin library that automatically generates builders for data classes using annotations, especially useful for testing.
 
@@ -339,7 +339,20 @@ val orderItems = listOf(
 
 ## 📦 Installation and Usage
 
-### Option 1: Use locally (recommended for testing)
+### Option 1: JitPack
+
+```kotlin
+repositories {
+    maven { url = uri("https://jitpack.io") }
+}
+
+dependencies {
+    implementation("com.github.angelorobsonmelo.kotlin-builder-generator:annotation:1.0.0")
+    ksp("com.github.angelorobsonmelo.kotlin-builder-generator:processor:1.0.0")
+}
+```
+
+### Option 2: Use locally (recommended for testing)
 
 1. **Clone the repository:**
 ```bash
@@ -364,19 +377,6 @@ repositories {
 dependencies {
     implementation("com.angelorobson.buildergen:annotation:1.0.0")
     ksp("com.angelorobson.buildergen:processor:1.0.0")
-}
-```
-
-### Option 2: JitPack (future)
-
-```kotlin
-repositories {
-    maven { url = uri("https://jitpack.io") }
-}
-
-dependencies {
-    implementation("com.github.your-username:kotlin-builder-generator:annotation:1.0.0")
-    ksp("com.github.your-username:kotlin-builder-generator:processor:1.0.0")
 }
 ```
 
