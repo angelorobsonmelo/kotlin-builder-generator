@@ -1,0 +1,238 @@
+# Kotlin Builder Generator - .gitignore
+
+# ===========================================
+# Gradle
+# ===========================================
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# ===========================================
+# Android Studio / IntelliJ IDEA
+# ===========================================
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+local.properties
+
+# ===========================================
+# Android specific
+# ===========================================
+*.apk
+*.aab
+*.ap_
+*.dex
+bin/
+gen/
+proguard/
+lint/
+captures/
+*.jks
+*.keystore
+
+# ===========================================
+# Kotlin
+# ===========================================
+*.kt.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ===========================================
+# KSP (Kotlin Symbol Processing)
+# ===========================================
+**/build/generated/ksp/
+build/generated/ksp/
+**/generated/
+
+# ===========================================
+# Maven
+# ===========================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ===========================================
+# OS specific
+# ===========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===========================================
+# IDEs
+# ===========================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata
+*.pydevproject
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+.loadpath
+.factorypath
+
+# Sublime Text
+*.sublime-*
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===========================================
+# Build and Test Reports
+# ===========================================
+**/build/reports/
+**/build/test-results/
+**/build/tmp/
+test-output/
+*.log
+*.hprof
+
+# ===========================================
+# Version Control
+# ===========================================
+.svn/
+.bzr/
+.hg/
+.git/
+*.orig
+*.rej
+
+# ===========================================
+# Temporary and Cache files
+# ===========================================
+*.cache
+.cache/
+*.temp
+*.temporary
+*.lock
+.lock-wscript
+
+# ===========================================
+# Secrets and Security
+# ===========================================
+*.key
+*.pem
+*.p12
+*.jks
+keystore.properties
+google-services.json
+secrets.properties
+local.properties
+
+# ===========================================
+# Documentation
+# ===========================================
+docs/build/
+*.pdf
+!README*.pdf
+
+# ===========================================
+# Kotlin Multiplatform
+# ===========================================
+.kotlin/
+kotlin-js-store/
+
+# ===========================================
+# Custom project specific
+# ===========================================
+
+# Sample generated code (will be regenerated)
+sample/build/generated/
+
+# KSP cache
+.ksp/
+
+# Any local test files
+test_*.kt
+*_test_output.txt
+
+# Local run scripts
+run_*.sh
+test_*.sh
+!clean-ksp-cache.sh

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(./gradlew:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(for file in *.kt)",
+      "Bash(do sed -i '' 's/package com\\.buildergen\\.sample/package com.angelorobson.buildergen.sample/g; s/import com\\.buildergen\\.annotation/import com.angelorobson.buildergen.annotation/g' \"$file\")",
+      "Bash(done)",
+      "Bash(do sed -i '' 's/package com\\.buildergen\\.sample/package com.angelorobson.buildergen.sample/g' \"$file\")",
+      "Bash(rm:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(/Users/angelomelo/AndroidStudioProjects/kotlin-builder-generator/gradlew clean build)",
+      "Bash(/Users/angelomelo/AndroidStudioProjects/kotlin-builder-generator/gradlew clean build --no-daemon --project-dir=/Users/angelomelo/AndroidStudioProjects/kotlin-builder-generator)",
+      "Bash(java:*)",
+      "Bash(/Users/angelomelo/AndroidStudioProjects/kotlin-builder-generator/test-build.sh:*)",
+      "Bash(bash -c:*)",
+      "Bash(\"/Users/angelomelo/AndroidStudioProjects/kotlin-builder-generator/gradlew\" --version)",
+      "Bash(bash:*)",
+      "Bash(sh:*)",
+      "Bash(/Users/angelomelo/AndroidStudioProjects/kotlin-builder-generator/gradlew --version)"
+    ],
+    "deny": []
+  }
+}

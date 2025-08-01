@@ -1,0 +1,24 @@
+[versions]
+kotlin = "2.0.20"
+ksp = "2.0.20-1.0.25"
+kotlinpoet = "1.18.1"
+junit = "5.10.1"
+assertj = "3.24.2"
+
+[libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlinpoet-core = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
+kotlinpoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlinpoet" }
+ksp-api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
+
+# Testing libraries
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+[bundles]
+kotlinpoet = ["kotlinpoet-core", "kotlinpoet-ksp"]
+testing = ["junit-jupiter", "assertj-core"]
